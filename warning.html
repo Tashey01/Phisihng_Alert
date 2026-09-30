@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        Potential Phishing Warning
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="warning.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="warning-box">
+
+        <h1>
+            ⚠ Potentially Suspicious URL
+        </h1>
+
+
+        <p>
+            This website triggered one or more
+            URL warning indicators.
+        </p>
+
+
+        <div class="url-box">
+
+            <strong>
+                Destination:
+            </strong>
+
+            <p id="destination"></p>
+
+        </div>
+
+
+        <h2>
+            Why was this warning shown?
+        </h2>
+
+
+        <ul id="warning-list"></ul>
+
+
+        <div class="advice">
+
+            <strong>
+                Recommended action
+            </strong>
+
+            <p>
+                Check the website address carefully.
+                If you were expecting to visit a trusted
+                service, access it independently rather
+                than relying on this link.
+            </p>
+
+        </div>
+
+
+        <button id="backButton">
+            Go Back
+        </button>
+
+
+        <button id="continueButton">
+            Continue Anyway
+        </button>
+
+    </div>
+
+
+    <script src="warning.js"></script>
+
+</body>
+
+</html>
