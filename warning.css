@@ -19,6 +19,12 @@ h1 {
     font-size: 28px;
 }
 
+#warningSym {
+    background-color: yellow;
+    border: solid 2px black;
+    margin: 2%;
+}
+
 
 .url-box {
     background: #eeeeee;
