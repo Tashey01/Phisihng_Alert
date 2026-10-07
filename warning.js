@@ -24,20 +24,28 @@ try {
 
 catch (error) {
 
-    warnings = [
-        "A suspicious URL characteristic was detected."
-    ];
+    warnings = [{
+        rule: "Unknown",
+        title: "URL warning",
+        message:
+            "A potentially suspicious URL characteristic was detected."
+    }];
 }
 
 
-// Display destination
+// =====================================================
+// DISPLAY DESTINATION
+// =====================================================
 
 document.getElementById(
     "destination"
-).textContent = destination;
+).textContent =
+    destination;
 
 
-// Display warnings
+// =====================================================
+// DISPLAY WARNINGS
+// =====================================================
 
 const warningList =
     document.getElementById(
@@ -50,15 +58,42 @@ warnings.forEach(function(warning) {
     const item =
         document.createElement("li");
 
-    item.textContent =
-        warning;
 
-    warningList.appendChild(item);
+    const heading =
+        document.createElement("strong");
 
+
+    heading.textContent =
+        `${warning.rule} — ${warning.title}`;
+
+
+    const explanation =
+        document.createElement("div");
+
+
+    explanation.textContent =
+        warning.message;
+
+
+    item.appendChild(
+        heading
+    );
+
+
+    item.appendChild(
+        explanation
+    );
+
+
+    warningList.appendChild(
+        item
+    );
 });
 
 
+// =====================================================
 // GO BACK
+// =====================================================
 
 document.getElementById(
     "backButton"
@@ -72,16 +107,35 @@ document.getElementById(
 );
 
 
-// CONTINUE
+// =====================================================
+// CONTINUE ANYWAY
+// =====================================================
 
 document.getElementById(
     "continueButton"
 ).addEventListener(
     "click",
-    function() {
+    async function() {
 
-        window.location.href =
-            destination;
+        try {
 
+            await chrome.runtime.sendMessage({
+                type: "ALLOW_ONCE",
+                url: destination
+            });
+
+
+            window.location.href =
+                destination;
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Could not continue:",
+                error
+            );
+        }
     }
 );

@@ -20,9 +20,27 @@ h1 {
 }
 
 #warningSym {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 45px;
+    height: 45px;
+
     background-color: yellow;
     border: solid 2px black;
-    margin: 2%;
+
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+#warning-list li {
+    margin-bottom: 15px;
+}
+
+#warning-list li strong {
+    display: block;
+    margin-bottom: 4px;
 }
 
 
